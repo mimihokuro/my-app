@@ -1,4 +1,4 @@
-import styles from "../../styles/Home.module.css";
+import styles from "./Header.module.css";
 import Image from "next/image";
 
 export const Header = (props) => {
