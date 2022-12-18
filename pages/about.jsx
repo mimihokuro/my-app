@@ -18,7 +18,7 @@ export default function About() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className={styles.main}>
-        <Header />
+        <Header title="about" />
 
         <Logo />
 

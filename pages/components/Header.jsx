@@ -1,12 +1,12 @@
 import styles from "../../styles/Home.module.css";
 import Image from "next/image";
 
-export const Header = () => {
+export const Header = (props) => {
   return (
     <div className={styles.description}>
       <p>
         Get started by editing&nbsp;
-        <code className={styles.code}>pages/index.js</code>
+        <code className={styles.code}>pages/{props.title}.js</code>
       </p>
       <div>
         <a
