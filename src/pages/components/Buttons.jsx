@@ -1,41 +1,10 @@
 import styles from "./Buttons.module.css";
-import { useCallback, useState } from "react";
+import { useCounter } from "src/hooks/useCounter";
+import { useInputArray } from "src/hooks/useInputArray";
 
 export const Buttons = () => {
-  const [count, setCount] = useState(0);
-  const [text, setText] = useState("");
-  const [isShow, setIsShow] = useState(true);
-  const [array, setArray] = useState([]);
-
-  const handleClick = useCallback(() => {
-    console.log(count);
-    setCount((count) => count + 10);
-  }, [count]);
-
-  const handleText = useCallback(
-    (e) => {
-      if (text.length >= 5) {
-        return;
-      }
-      setText(e.target.value.trim());
-    },
-    [text]
-  );
-
-  const handleDisplay = useCallback(() => {
-    setIsShow((isShow) => !isShow);
-  }, []);
-
-  const handleAdd = useCallback(() => {
-    setArray((prevArray) => {
-      if (prevArray.some((item) => item === text)) {
-        alert("Same");
-      }
-      const newArray = [...prevArray, text];
-      setText("");
-      return newArray;
-    });
-  }, [text]);
+  const { count, isShow, handleClick, handleDisplay } = useCounter();
+  const { text, array, handleText, handleAdd } = useInputArray();
 
   return (
     <div className={styles.flex}>
@@ -46,6 +15,7 @@ export const Buttons = () => {
       ) : null}
       <button onClick={handleClick}>CountUp</button>
       <button onClick={handleDisplay}>{isShow ? "表示" : "非表示"}</button>
+
       <button onClick={handleAdd}>追加</button>
       <input type="text" value={text} onChange={handleText} />
       <ul>

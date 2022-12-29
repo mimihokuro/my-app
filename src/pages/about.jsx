@@ -1,4 +1,5 @@
 import Head from "next/head";
+import Buttons from "src/pages/components/Buttons";
 import Cards from "src/pages/components/Cards";
 import Header from "src/pages/components/Header";
 import Logo from "src/pages/components/Logo";
@@ -17,7 +18,7 @@ export default function About() {
         <Header title="about" />
 
         <Logo />
-
+        <Buttons />
         <Cards />
       </main>
     </>
