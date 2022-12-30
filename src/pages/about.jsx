@@ -1,11 +1,21 @@
 import Head from "next/head";
-import Buttons from "src/pages/components/Buttons";
 import Cards from "src/pages/components/Cards";
 import Header from "src/pages/components/Header";
 import Logo from "src/pages/components/Logo";
 import styles from "src/styles/Home.module.css";
 
-export default function About() {
+export default function About(props) {
+  const {
+    count,
+    isShow,
+    handleClick,
+    handleDisplay,
+    text,
+    array,
+    handleText,
+    handleAdd,
+  } = props;
+
   return (
     <>
       <Head>
@@ -16,9 +26,24 @@ export default function About() {
       </Head>
       <main className={styles.main}>
         <Header title="about" />
-
         <Logo />
-        <Buttons />
+        <div className={styles.flex}>
+          {isShow ? (
+            <div className={styles.thirteen}>
+              <h1>{count}</h1>
+            </div>
+          ) : null}
+          <button onClick={handleClick}>CountUp</button>
+          <button onClick={handleDisplay}>{isShow ? "表示" : "非表示"}</button>
+
+          <button onClick={handleAdd}>追加</button>
+          <input type="text" value={text} onChange={handleText} />
+          <ul>
+            {array.map((item) => {
+              return <li key={item}>{item}</li>;
+            })}
+          </ul>
+        </div>{" "}
         <Cards />
       </main>
     </>
