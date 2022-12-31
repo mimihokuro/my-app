@@ -1,6 +1,7 @@
 import styles from "./Cards.module.css";
 import { Inter } from "@next/font/google";
 import Link from "next/link";
+import { useCallback, useState } from "react";
 const inter = Inter({ subsets: ["latin"] });
 
 const CARDS = [
@@ -41,9 +42,18 @@ const CARDS = [
 ];
 
 export const Cards = () => {
+  const [items, setItems] = useState(CARDS);
+
+  const handleDecrease = useCallback(() => {
+    setItems((prevItems) => {
+      return prevItems.slice(0, prevItems.length - 1);
+    });
+  }, []);
+
   return (
     <div className={styles.grid}>
-      {CARDS.map((card) => {
+      <button onClick={handleDecrease}>Decrease</button>
+      {items.map((card) => {
         return (
           <Link
             key={card.title}
