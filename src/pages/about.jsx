@@ -6,7 +6,7 @@ import styles from "src/styles/Home.module.css";
 
 export default function About(props) {
   const {
-    count,
+    doubleCount,
     isShow,
     handleClick,
     handleDisplay,
@@ -30,7 +30,7 @@ export default function About(props) {
         <div className={styles.flex}>
           {isShow ? (
             <div className={styles.thirteen}>
-              <h1>{count}</h1>
+              <h1>{doubleCount}</h1>
             </div>
           ) : null}
           <button onClick={handleClick}>CountUp</button>
