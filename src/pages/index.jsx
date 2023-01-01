@@ -4,18 +4,7 @@ import Header from "src/pages/components/Header";
 import Logo from "src/pages/components/Logo";
 import styles from "src/styles/Home.module.css";
 
-export default function Home(props) {
-  const {
-    count,
-    isShow,
-    handleClick,
-    handleDisplay,
-    text,
-    array,
-    handleText,
-    handleAdd,
-  } = props;
-
+const Home = (props) => {
   return (
     <>
       <Head>
@@ -29,18 +18,20 @@ export default function Home(props) {
 
         <Logo />
         <div className={styles.flex}>
-          {isShow ? (
+          {props.isShow ? (
             <div className={styles.thirteen}>
-              <h1>{count}</h1>
+              <h1>{props.count}</h1>
             </div>
           ) : null}
-          <button onClick={handleClick}>CountUp</button>
-          <button onClick={handleDisplay}>{isShow ? "表示" : "非表示"}</button>
+          <button onClick={props.handleClick}>CountUp</button>
+          <button onClick={props.handleDisplay}>
+            {props.isShow ? "表示" : "非表示"}
+          </button>
 
-          <button onClick={handleAdd}>追加</button>
-          <input type="text" value={text} onChange={handleText} />
+          <button onClick={props.handleAdd}>追加</button>
+          <input type="text" value={props.text} onChange={props.handleText} />
           <ul>
-            {array.map((item) => {
+            {props.array.map((item) => {
               return <li key={item}>{item}</li>;
             })}
           </ul>
@@ -49,4 +40,5 @@ export default function Home(props) {
       </main>
     </>
   );
-}
+};
+export default Home;
