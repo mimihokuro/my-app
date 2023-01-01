@@ -13,9 +13,8 @@ const Home = (props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header title="index" />
       <main className={styles.main}>
-        <Header title="index" />
-
         <Logo />
         <div className={styles.flex}>
           {props.isShow ? (

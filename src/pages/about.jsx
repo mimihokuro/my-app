@@ -13,8 +13,8 @@ const About = (props) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
+      <Header title="about" />
       <main className={styles.main}>
-        <Header title="about" />
         <Logo />
         <div className={styles.flex}>
           {props.isShow ? (

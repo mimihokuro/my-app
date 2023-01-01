@@ -1,13 +1,14 @@
 import styles from "./Header.module.css";
 import Image from "next/image";
+import Link from "next/link";
 
 export const Header = (props) => {
   return (
     <div className={styles.description}>
-      <p>
-        Get started by editing&nbsp;
-        <code className={styles.code}>pages/{props.title}.js</code>
-      </p>
+      <div className={styles.headerlinks}>
+        <Link href="/">index</Link>
+        <Link href="/about">about</Link>
+      </div>
       <div>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
