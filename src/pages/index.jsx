@@ -1,22 +1,9 @@
 import Head from "next/head";
-import { useCallback, useEffect, useState } from "react";
 import Header from "src/pages/components/Header";
+import Posts from "src/pages/components/Posts";
 import styles from "src/styles/Home.module.css";
 
 const Home = () => {
-  const [posts, setPosts] = useState([]);
-
-  const getPosts = useCallback(async () => {
-    const json = await (
-      await fetch("https://jsonplaceholder.typicode.com/posts")
-    ).json();
-    setPosts(json);
-  }, []);
-
-  useEffect(() => {
-    getPosts();
-  }, [getPosts]);
-
   return (
     <>
       <Head>
@@ -27,13 +14,7 @@ const Home = () => {
       </Head>
       <Header title="index" />
       <main className={styles.main}>
-        {posts.length > 0 ? (
-          <ol>
-            {posts.map((post) => {
-              return <li key={post.id}>{post.title}</li>;
-            })}
-          </ol>
-        ) : null}
+        <Posts />
       </main>
     </>
   );
