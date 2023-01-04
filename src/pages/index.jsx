@@ -1,10 +1,22 @@
 import Head from "next/head";
-import Cards from "src/pages/components/Cards";
+import { useCallback, useEffect, useState } from "react";
 import Header from "src/pages/components/Header";
-import Logo from "src/pages/components/Logo";
 import styles from "src/styles/Home.module.css";
 
-const Home = (props) => {
+const Home = () => {
+  const [posts, setPosts] = useState([]);
+
+  const getPosts = useCallback(async () => {
+    const json = await (
+      await fetch("https://jsonplaceholder.typicode.com/posts")
+    ).json();
+    setPosts(json);
+  }, []);
+
+  useEffect(() => {
+    getPosts();
+  }, [getPosts]);
+
   return (
     <>
       <Head>
@@ -15,27 +27,13 @@ const Home = (props) => {
       </Head>
       <Header title="index" />
       <main className={styles.main}>
-        <Logo />
-        <div className={styles.flex}>
-          {props.isShow ? (
-            <div className={styles.thirteen}>
-              <h1>{props.count}</h1>
-            </div>
-          ) : null}
-          <button onClick={props.handleClick}>CountUp</button>
-          <button onClick={props.handleDisplay}>
-            {props.isShow ? "表示" : "非表示"}
-          </button>
-
-          <button onClick={props.handleAdd}>追加</button>
-          <input type="text" value={props.text} onChange={props.handleText} />
-          <ul>
-            {props.array.map((item) => {
-              return <li key={item}>{item}</li>;
+        {posts.length > 0 ? (
+          <ol>
+            {posts.map((post) => {
+              return <li key={post.id}>{post.title}</li>;
             })}
-          </ul>
-        </div>
-        <Cards />
+          </ol>
+        ) : null}
       </main>
     </>
   );
