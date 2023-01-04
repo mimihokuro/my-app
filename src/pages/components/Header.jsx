@@ -5,10 +5,10 @@ import Link from "next/link";
 export const Header = (props) => {
   return (
     <div className={styles.description}>
-      <div className={styles.headerlinks}>
+      <nav className={styles.headerlinks}>
         <Link href="/">index</Link>
         <Link href="/about">about</Link>
-      </div>
+      </nav>
       <div>
         <a
           href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
