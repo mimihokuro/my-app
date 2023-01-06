@@ -2,12 +2,22 @@ import styles from "./Header.module.css";
 import Image from "next/image";
 import Link from "next/link";
 
-export const Header = (props) => {
+const NAV_ITEM = [
+  { href: "/posts", label: "Posts" },
+  { href: "/about", label: "About" },
+];
+
+export const Header = () => {
   return (
     <div className={styles.description}>
       <nav className={styles.headerlinks}>
-        <Link href="/">index</Link>
-        <Link href="/about">about</Link>
+        {NAV_ITEM.map((item) => {
+          return (
+            <Link href={item.href} key={item.href}>
+              {item.label}
+            </Link>
+          );
+        })}
       </nav>
       <div>
         <a
